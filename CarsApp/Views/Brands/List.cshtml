@@ -1,0 +1,32 @@
+﻿@using static CarsApp.Data.Models.Brands
+<meta charset="utf-8">
+
+<p>
+    <h3>Марки автомобилей</h3>
+</p>
+<table>
+    @{
+        <tr>
+            <th>
+                <a class="btn btn-outline-info" asp-action="List" asp-controller="Brands" asp-route-sortOrder="@ViewBag.BrandsSort">Марка</a>
+            </th>
+        </tr>
+        foreach (var el in Model)
+        {
+            <tr>
+                <td>
+                    @{if(el.Active)
+                    {
+                        <input type="text" style="text-align: center; font-weight: bolder;  font-size:medium" value="@el.Name" class="form-control col-lg-12" readonly>
+                    }
+                    else
+                    {
+                        <input type="text" style="text-align: center; font-weight: bolder;
+                        font-size:medium; background-color:darkgray" value="@el.Name" class="form-control col-lg-12" readonly>
+                    }
+                    }
+                </td>
+            </tr>   
+        }
+    }
+</table>

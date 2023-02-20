@@ -1,0 +1,38 @@
+﻿<meta charset="utf-8">
+<p>
+    <h3>Модели автомобилей</h3>
+</p>
+
+<table>
+    @{
+        <tr>
+            <th>
+                <a class="btn btn-outline-info" asp-action="List" asp-controller="CarModels" asp-route-sortOrder="@ViewBag.ModelsSort">Модель</a>
+            </th>
+            <th>
+                <a class="btn btn-outline-info" asp-action="List" asp-controller="CarModels" asp-route-sortOrder="@ViewBag.BrandsSort">Марка</a>
+            </th>
+        </tr>
+        foreach(var el in Model)
+        {
+            <tr>
+                <td>
+                    @{if(el.Active)
+                        {
+                            <input type="text" style="text-align: center; font-weight: bolder; 
+                            font-size:medium" value="@el.Name" class="form-control col-lg-12" readonly>
+                        }
+                        else
+                        {
+                            <input type="text" style="text-align: center; font-weight: bolder;
+                            font-size:medium; background-color:darkgray" value="@el.Name" class="form-control col-lg-12" readonly>
+                        }
+                    }
+                </td>
+                <td>
+                    <input type="text" style="text-align: center; font-weight: bolder;  font-size:medium" value="@el.Brand.Name" class="form-control col-lg-12" readonly>
+                </td>
+            </tr>
+        }
+    }
+</table>

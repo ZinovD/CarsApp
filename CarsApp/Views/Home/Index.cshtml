@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<body>
+    <div class="row">
+        <div class="col-md-6">
+            <a class="col-md-9 btn btn-outline-dark fw-bold" asp-action="List" asp-controller="Brands">Марки автомобилей</a>
+            <a class="col-md-2 btn btn-primary" asp-controller="Brands" asp-action="Create">+Добавить</a>
+            <table>
+                @{
+                    <tr>
+                        <th>
+                            <a class="btn btn-outline-info" asp-action="Index" asp-controller="Home" asp-route-sortOrder="@ViewBag.BrandsSort">Марка</a>
+                        </th>
+                    </tr>
+                    foreach (var el in ViewBag.Brands)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    if (el.Active)
+                                    {
+                                        <input type="text" style="text-align: center; font-weight: bolder;  font-size:medium" value="@el.Name" class="form-control col-lg-12" readonly>
+                                    }
+                                    else
+                                    {
+                                        <input type="text" style="text-align: center; font-weight: bolder;
+                                font-size:medium; background-color:darkgray" value="@el.Name" class="form-control col-lg-12" readonly>
+                                    }
+                                }
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-info" asp-action="Edit" asp-controller="Brands" asp-route-Id="@el.Id">Изменить</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" asp-action="Delete" asp-controller="Brands" asp-route-Id="@el.Id">Удалить</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+        <div class="col-md-6">
+           <a class="col-md-9 btn btn-outline-dark fw-bold" asp-action="List" asp-controller="CarModels">Модели автомобилей</a>
+           <a class="col-md-2 btn btn-primary" asp-controller="CarModels" asp-action="Create">+Добавить</a>
+           <table>
+                @{
+                    <tr>
+                        <th>
+                            <a class="btn btn-outline-info" asp-action="Index" asp-controller="Home" asp-route-sortOrder="@ViewBag.ModelsSort">Модель</a>
+                        </th>
+                        <th>
+                            <a class="btn btn-outline-info" asp-action="Index" asp-controller="Home" asp-route-sortOrder="@ViewBag.BrandsSort">Марка</a>
+                        </th>
+                    </tr>
+                    foreach (var el in ViewBag.CarModels)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    if (el.Active)
+                                    {
+                                        <input type="text" style="text-align: center; font-weight: bolder;
+                                    font-size:medium" value="@el.Name" class="form-control col-lg-12" readonly>
+                                    }
+                                    else
+                                    {
+                                        <input type="text" style="text-align: center; font-weight: bolder;
+                                    font-size:medium; background-color:darkgray" value="@el.Name" class="form-control col-lg-12" readonly>
+                                    }
+                                }
+                            </td>
+                            <td>
+                                <input type="text" style="text-align: center; font-weight: bolder;  font-size:medium" value="@el.Brand.Name" class="form-control col-lg-12" readonly>
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-info" asp-action="Edit" asp-controller="CarModels" asp-route-Id="@el.Id">Изменить</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" onclick="test(event)" asp-action="Delete" asp-controller="CarModels" asp-route-Id="@el.Id">Удалить</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</body>

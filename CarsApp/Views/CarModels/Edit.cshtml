@@ -1,0 +1,32 @@
+﻿@model CarModels
+<form method="post" asp-antiforgery="true" enctype="multipart/form-data">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4>Изменение модели автомобиля</h4>
+        </div>
+        <div class="modal-body">
+            <dl class="dl-horizontal">
+                <dt>Название модели:</dt>
+                <dd>
+                    <input type="text" asp-for="Name" /><br />
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>Марка:</dt>
+                <dd>
+                    <select asp-for="BrandId" asp-items="@ViewBag.Brands"></select><br />
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>Статус</dt>
+                <dd>
+                    <input type="checkbox" asp-for="Active"/><br />
+                </dd>
+            </dl>
+        </div>
+        <div class="modal-footer">
+            <input class="btn btn-success" type="submit" value="Готово" />
+            <button class="btn btn-secondary" asp-controller="Home" asp-action="Index">Закрыть</button>
+        </div>
+    </div>
+</form>
